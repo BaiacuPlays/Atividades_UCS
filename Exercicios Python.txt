@@ -1,3 +1,5 @@
+Exercicios da Trilha de Aprendizagem Python - 08/04/2025, do 600 ao 1000
+
 C00000600 - Faça um algoritmo que leia 3 notas de um aluno e escreva sua média harmônica. Se o aluno obteve média abaixo de 6.0, E SOMENTE NESSE CASO, leia uma quarta nota (da prova de recuperação) e substitua a menor das três notas pela nota da recuperação e recalcule a média harmônica. Escreva a média harmônica final e o conceito obtido (0, se média harmônica (MH) < 6.0; 1 se 6.0 <= MH <7.0; 2 se 7.0 <= MH < 8.0; 3 se 8.0 <= MH < 9.0; 4 se MH>=9.0).
 
 nota1 = int(input("digite a primeira nota: "))
