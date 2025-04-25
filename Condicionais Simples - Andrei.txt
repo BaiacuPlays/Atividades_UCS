@@ -1,0 +1,354 @@
+13) Desenvolva um programa que implemente uma calculadora de 4 operações. O programa deve
+solicitar que o usuário informe três dados: o primeiro operando, o operador (+,-,*,/) e o segundo
+operando. O programa deve mostrar na tela a operação e seu resultado.
+Em duas situações, o programa não deverá efetuar o cálculo:
+• Se o operador informado pelo usuário for inválido mostrar a mensagem “Operador inválido” e
+encerrar a execução do programa
+• Se o segundo operando for igual a 0 (zero) e o operador escolhido for a divisão (/), mostrar na
+tela a mensagem “Divisão por Zero!” e encerrar a execução do programa.
+Para encerrar o programa é utilizada a função exit(). A função exit() está incluída na biblioteca
+stdlib.
+A variável que identifica a operação deve ser declarada com o tipo char.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+float num1, num2;
+char oper;
+
+int main() {
+     printf("Digite o primeiro numero: \n");
+        scanf("%f", &num1);
+      printf("Digite o operador (+, -, *, /): \n");
+        scanf(" %c", &oper);
+    printf("Digite o segundo numero: \n");
+        scanf(" %f", &num2);
+
+    if(oper != '+' && oper != '-' && oper != '*' && oper != '/'){
+        printf("Operador invalido");
+        exit(1);
+    }
+if(oper == '/' && num2 == 0){
+    printf("Divisão por zero. \n");
+    exit(1);
+}
+  if(oper == '+'){
+      printf("%.2f + %.2f = %.2f", num1, num2, num1 + num2);
+  }      
+    if(oper == '-'){
+      printf("%.2f - %.2f = %.2f", num1, num2, num1 - num2);
+  }      
+    if(oper == '*'){
+      printf("%.2f * %.2f = %.2f", num1, num2, num1 * num2);
+  }      
+    if(oper == '/'){
+      printf("%.2f / %.2f = %.2f", num1, num2, num1 / num2);
+  }      
+    
+    
+}
+
+
+12) Desenvolva um programa que solicite o usuário informar a altura em metros e o sexo de uma
+pessoa. O programa deverá calcular o peso ideal da pessoa, utilizando as seguintes fórmulas:
+✔ Para Homens: ( 72.7 * altura ) - 58;
+✔ Para Mulheres: ( 62.1 * altura) – 44.7.
+A altura da pessoa é um valor real. O sexo da pessoa deverá ser identificado através de um
+caracter. O programa deverá aceitar os caracteres “m” ou “M” para identificar pessoas do sexo
+masculino e os caracteres “f” ou “F” para identificar pessoas do sexo feminino. A variável que identifica
+o sexo deve ser declarada com o tipo char.
+Exemplos:
+Valores informados pelo usuário Mensagens mostradas na tela
+1º Exemplo Altura: 1.6 Sexo: f Peso ideal: 54,7kg
+2º Exemplo Altura: 1.8 Sexo: M Peso ideal: 72,9 kg
+
+#include <stdio.h>
+
+float alt, pesoideal;
+char sex;
+
+int main() {
+    printf("Digite a altura em metros \n");
+    scanf("%f", &alt);
+    printf("Digite o sexo, M para masculino e F para feminino \n");
+    scanf(" %c", &sex);
+
+    if(sex == 'm' || sex == 'M'){
+        pesoideal = (72.7 * alt) -58;
+        printf("O peso ideal para um homem com %.2f metros de altura é: %.2f kg\n", alt, pesoideal);
+    }
+     if(sex == 'f' || sex == 'F'){
+        pesoideal = (62.1 * alt) -44.7;
+        printf("O peso ideal para uma mulher com %.2f metros de altura é: %.2f kg\n", alt, pesoideal);
+    }
+if (sex != 'M' && sex != 'm' && sex != 'F' && sex != 'f') {
+        printf("Sexo inválido! Por favor, informe M para Masculino ou F para Feminino.\n");
+    }
+  
+}
+
+
+11) Desenvolva um programa que solicite que o usuário informe um código e três valores nomeados
+como a, b e c. O código vai determinar qual operação o programa irá realizar:
+✔ código = 1: multiplicar os três valores;
+✔ código = 2: somar os três valores;
+✔ código = 3: subtrair os três valores;
+✔ código = 4: somar o cubo dos 3 valores;
+Considerar que o usuário vai digitar apenas códigos válidos (de 1 a 4) e os três valores digitados
+serão diferentes de zero e positivos.
+Exemplos:
+Valores informados pelo usuário Mensagens mostradas na tela
+1º Exemplo Código: 3 a = 15 b=30 c=90 Resultado da subtração: 75
+2º Exemplo Código: 4 a = 2 b=3 c=5 Soma dos cubos: 160
+
+#include <stdio.h>
+
+int cod, a, b, c;
+
+int main() {
+printf("Digite um  codigo de 1 a 4 e tres valores \n");
+scanf("%d %d %d %d", &cod, &a, &b, &c);
+
+        if(cod == 1 ){
+            printf("%d * %d * %d = %d \n", a, b, c, a*b*c);
+        }
+    if(cod == 2 ){
+            printf("%d + %d + %d = %d \n", a, b, c, a+b+c);
+        }
+    if(cod == 3 ){
+            printf("%d - %d - %d = %d \n", a, b, c, a-b-c);
+        }
+    if(cod == 4 ){
+            printf("Soma dos cubos: %d + %d + %d = %d \n", a, b, c, (a * a * a) + (b * b * b) + (c * c * c));
+        }
+}
+
+
+10) Desenvolva um programa que solicite ao usuário informar um valor inteiro que corresponda a idade
+de um nadador. Após, o programa deverá classificar o nadador nas categorias abaixo e mostrar esta
+informação na tela do computador. As categorias são:
+• Infantil A : 5 a 7 anos;
+• Infantil B : 8 a 10 anos;
+• Juvenil A : 11 a 13 anos;
+• Juvenil B : 14 a 17 anos;
+• Sênior : maiores de 18 anos.
+Exemplo: Se o usuário informar que o nadador possui 12 anos, o programa deverá mostrar na
+tela a mensagem “Juvenil A”.
+
+#include <stdio.h>
+
+int num1;
+
+int main() {
+printf("Digite um  numero inteiro maior que 4 \n");
+scanf("%d", &num1);
+
+        if((num1 >= 5) && (num1 <= 7))
+            printf("Infantil A");
+        if((num1 >=8) && (num1 <=10))
+            printf("Infantil B");
+         if((num1 >=11) && (num1 <=13))
+            printf("Juvenil A");
+        if((num1 >=14) && (num1 <=17))
+            printf("Juvenil B");
+         if(num1 >= 18)
+            printf("Sênior");
+        if(num1 <=4)
+            printf("Jovem demais para participar");
+}
+
+
+9) Desenvolva um programa que solicite ao usuário digitar dois números reais. O programa deverá
+verificar entre estes dois valores qual é o maior valor e mostrar na tela a diferença do maior pelo menor
+valor.
+Exemplo: se o usuário informar os números 97.6 e 32.65, deverá ser mostrado na tela a
+mensagem “ 97.6 – 32.5 = 65.1”.
+
+
+#include <stdio.h>
+
+float num1, num2;
+
+int main() {
+printf("Digite dois numeros reais \n");
+scanf("%f %f", &num1, &num2);
+
+if (num1 > num2) {
+        printf("%.2f - %.2f = %.2f\n", num1, num2, num1 - num2);
+    } else {
+        printf("%.2f - %.2f = %.2f\n", num2, num1, num2 - num1);
+    }
+    
+}
+
+
+
+8) Desenvolva um programa que solicite ao usuário digitar dois números reais. O programa deverá
+verificar entre estes dois valores qual é o menor valor e mostrar na tela os dois valores em ordem
+crescente.
+Exemplo: se o usuário informar os números 97.6 e 32.65, deverá ser mostrado na tela a
+mensagem “Valores em ordem crescente: 32.5 e 97.6”.
+
+#include <stdio.h>
+
+float num1, num2;
+
+int main() {
+printf("Digite dois numeros reais \n");
+scanf("%f %f", &num1, &num2);
+
+if (num1 > num2){
+    printf("valores em ordem crescente: %.2f e %.2f\n", num2, num1);
+}
+    else{
+        if (num2 > num1){
+            printf("valores em ordem crescente: %.2f e %.2\n", num1, num2);
+        }
+    }
+
+}
+
+
+7) Desenvolva um programa que solicite ao usuário digitar dois números inteiros. O programa deverá
+verificar entre estes dois valores qual é o menor e mostrar na tela o menor valor. Se dois valores iguais
+forem digitados, o programa deverá mostrar a mensagem que dois números iguais foram mostrados.
+Exemplo: se o usuário informar os números 15 e 43, deverá ser mostrado na tela a mensagem
+“Menor valor: 15”. Se o usuário informar os números 15 e 15, deverá ser mostrado na tela a mensagem
+“Dois números iguais foram informados”.
+
+#include <stdio.h>
+
+int num1, num2;
+
+int main() {
+printf("Digite dois numero inteiro \n");
+scanf("%d %d", &num1, &num2);
+
+    if (num1 < num2){
+        printf("Menos valor: %d", num1);
+    }
+    else{
+        if(num2 < num1){
+            printf("menor valor: %d", num2);
+        }
+        else{
+            if(num1 == num2){
+                printf("os valores sao iguais");
+            }
+        }
+    }
+}
+
+
+6) Desenvolva um programa que solicite ao usuário digitar dois números inteiros. O programa deverá
+verificar entre estes dois valores qual é o maior e mostrar na tela o maior valor. Se dois valores iguais
+forem digitados, o programa deverá mostrar a mensagem que dois números iguais foram mostrados.
+Exemplo: se o usuário informar os números 15 e 43, deverá ser mostrado na tela a mensagem
+“Maior valor: 43”. Se o usuário informar os números 15 e 15, deverá ser mostrado na tela a mensagem
+“Dois números iguais foram informados”.
+
+#include <stdio.h>
+
+int num1, num2;
+
+int main() {
+printf("Digite dois numero inteiro \n");
+scanf("%d %d", &num1, &num2);
+
+    if (num1 > num2){
+        printf("maior valor: %d", num1);
+    }
+    else{
+        if(num2 > num1){
+            printf("maior valor: %d", num2);
+        }
+        else{
+            if(num1 == num2){
+                printf("os valores sao iguais");
+            }
+        }
+    }
+}
+
+
+5) Desenvolva um programa que solicite ao usuário digitar dois números inteiros. O programa deverá
+verificar se estes números são múltiplos entre si. Para realizar esta verificação, devemos dividir os dois
+números entre si e verificar se o resto da divisão é igual a zero. O programa deve mostrar na tela uma
+das seguintes mensagens "São múltiplos" ou "Não são múltiplos".
+Exemplo: se o usuário informar os números 3 e 21, a mensagem “ São múltiplos” deverá ser
+mostrada na tela. Se o usuário informar os números 5 e 7, a mensagem “ Não são múltiplos” deverá ser
+mostrada na tela.
+É importante salientar que para resolver este problema, duas divisões devem ser realizadas. No
+primeiro exemplo, devemos dividir 3/21 e 21/3. Se uma das duas divisões resultar em resto zero (21/3),
+então os dois números serão múltiplos.
+
+#include <stdio.h>
+
+int num1, num2;
+
+int main() {
+printf("Digite dois numero inteiro \n");
+scanf("%d %d", &num1, &num2);
+
+    if (num1 % num2 == 0 || num2 % num1 == 0){
+        printf("sao multiplos");
+    }
+    else{
+            printf("nao sao multiplos");
+    }
+}
+
+
+4) Desenvolva um programa que solicite ao usuário digitar um número inteiro. Após a digitação, o
+computador deverá mostrar na tela uma mensagem informando se o número é par ou ímpar. O número
+par é o número que dividido por 2 resulta resto zero. O número ímpar é o número que dividido por 2
+resulta resto um. Considere que o usuário não digitará o número zero, pois o número zero não é um
+número para e nem um número ímpar.
+Exemplo: se o usuário informar o número 98, deverá ser mostrado na tela a mensagem “98 é um
+número par”. Se o usuário informar o número 37, deverá ser mostrado na tela a mensagem “37 é um
+número ímpar”.
+ 
+#include <stdio.h>
+
+int num1;
+
+int main() {
+printf("Digite um numero inteiro \n");
+scanf("%d", &num1);
+
+if(num1 % 2 == 0){
+    printf("o numero é par");
+}
+    else{
+        if(num1 % 2 == 1){
+        printf("o numero é impar");
+        }
+    }
+
+}
+
+
+3) Desenvolva um programa que solicite ao usuário digitar um número inteiro. Após a digitação, o
+computador deverá mostrar na tela uma mensagem informando se o número maior, menor ou igual a
+zero.
+Exemplo: se o usuário informar o número 38, deverá ser mostrado na tela a mensagem “38 é um
+número maior que zero”. Se o usuário informar o número -13, deverá ser mostrado na tela a mensagem
+“-13 é um número menor que zero”. Se o usuário informar o número 0, deverá ser mostrado na tela a
+mensagem “Número digitado igual a zero”.
+
+int num1;
+
+int main() {
+    printf("Digite um numero!\n");
+    scanf("%d", &num1);
+
+    if(num1 >= 1) {
+        printf("positivo");
+    }
+        if(num1 == 0){
+            printf("zero");
+        }
+    else {
+        printf("negativo");
+        }
+}
