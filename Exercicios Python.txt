@@ -1,0 +1,512 @@
+C00000600 - Faça um algoritmo que leia 3 notas de um aluno e escreva sua média harmônica. Se o aluno obteve média abaixo de 6.0, E SOMENTE NESSE CASO, leia uma quarta nota (da prova de recuperação) e substitua a menor das três notas pela nota da recuperação e recalcule a média harmônica. Escreva a média harmônica final e o conceito obtido (0, se média harmônica (MH) < 6.0; 1 se 6.0 <= MH <7.0; 2 se 7.0 <= MH < 8.0; 3 se 8.0 <= MH < 9.0; 4 se MH>=9.0).
+
+nota1 = int(input("digite a primeira nota: "))
+nota2 = int(input("digite a segunda nota: "))
+nota3 = int(input("digite a terceira nota: "))
+
+mediaharmonica = (3 / (1 / nota1 + 1 / nota2 + 1 / nota3))
+
+if (mediaharmonica >= 6):
+   print("aprovado")
+   exit(0)
+else:
+   print("reprovado, digite a quarta nota:")
+   if (nota1 >= nota2 and nota1 >= nota3 and nota2 <= nota1
+       and nota2 <= nota3):
+      notamaior = nota1
+      notamenor = nota2
+      notameio = nota3
+   else:
+
+      if (nota2 >= nota1 and nota2 >= nota3 and nota1 <= nota2
+          and nota1 <= nota3):
+         notamaior = nota2
+         notamenor = nota1
+         notameio = nota3
+      else:
+
+         if (nota3 >= nota1 and nota3 >= nota2 and nota1 <= nota3
+             and nota2 <= nota3):
+            notamaior = nota3
+         notamenor = nota1
+         notameio = nota2
+
+nota4 = int(input("digite a quarta nota: "))
+#
+if nota1 <= nota2 and nota1 <= nota3:
+     nota1 = nota4
+else:
+     if nota2 <= nota1 and nota2 <= nota3:
+         nota2 = nota4
+     else:
+         nota3 = nota4
+
+mediaharmonica = 3 / (1/nota1 + 1/nota2 + 1/nota3)
+
+print(f"Média Harmônica após recuperação: {mediaharmonica:.2f}")
+
+if (mediaharmonica < 6):
+   print("Conceito 0")
+else:
+   if (mediaharmonica <= 6 and mediaharmonica < 7):
+      print("Conceito 1")
+   else:
+      if (mediaharmonica <= 7 and mediaharmonica < 8):
+         print("Conceito 2")
+      else:
+         if (mediaharmonica <= 8 and mediaharmonica < 9):
+            print("Conceito 3")
+         else:
+                print("Conceito 4")
+
+
+C00000625 - Faça um algoritmo que leia os códigos e as votações dos 5 candidatos da eleição para presidente em 1o turno. O algoritmo deve escrever, para cada candidato, seu código e seu percentual de votos. Se a eleição foi decidida no 1o turno, i.e., um candidato obteve 50% dos votos válidos + 1, o algoritmo deve escrever o código e o percentual de votos do eleito. Em caso contrário, o algoritmo deve escrever os códigos e os percentuais de votos dos dois candidatos que disputarão o segundo turno.
+
+candidato1 = int(input("Digite o código do 1º candidato: "))
+votostotais1 = int(input("Digite o número de votos totais dele: "))
+
+candidato2 = int(input("Digite o código do 2º candidato: "))
+votostotais2 = int(input("Digite o número de votos totais dele: "))
+
+candidato3 = int(input("Digite o código do 3º candidato: "))
+votostotais3 = int(input("Digite o número de votos totais dele: "))
+
+candidato4 = int(input("Digite o código do 4º candidato: "))
+votostotais4 = int(input("Digite o número de votos totais dele: "))
+
+candidato5 = int(input("Digite o código do 5º candidato: "))
+votostotais5 = int(input("Digite o número de votos totais dele: "))
+
+# Soma dos votos válidos
+votosvalidos = votostotais1 + votostotais2 + votostotais3 + votostotais4 + votostotais5
+
+# Cálculo dos percentuais
+percentual1 = (votostotais1 / votosvalidos) * 100
+percentual2 = (votostotais2 / votosvalidos) * 100
+percentual3 = (votostotais3 / votosvalidos) * 100
+percentual4 = (votostotais4 / votosvalidos) * 100
+percentual5 = (votostotais5 / votosvalidos) * 100
+
+# Exibindo percentuais
+print(f"O percentual de votos do candidato {candidato1} é de {percentual1:.2f}%")
+print(f"O percentual de votos do candidato {candidato2} é de {percentual2:.2f}%")
+print(f"O percentual de votos do candidato {candidato3} é de {percentual3:.2f}%")
+print(f"O percentual de votos do candidato {candidato4} é de {percentual4:.2f}%")
+print(f"O percentual de votos do candidato {candidato5} é de {percentual5:.2f}%")
+venceu = False
+
+if percentual1 > 50:
+    print(f"Eleito no 1º turno: Candidato {candidato1} com {percentual1:.2f}% dos votos.")
+    venceu = True
+if percentual2 > 50:
+    print(f"Eleito no 1º turno: Candidato {candidato2} com {percentual2:.2f}% dos votos.")
+    venceu = True
+if percentual3 > 50:
+    print(f"Eleito no 1º turno: Candidato {candidato3} com {percentual3:.2f}% dos votos.")
+    venceu = True
+if percentual4 > 50:
+    print(f"Eleito no 1º turno: Candidato {candidato4} com {percentual4:.2f}% dos votos.")
+    venceu = True
+if percentual5 > 50:
+    print(f"Eleito no 1º turno: Candidato {candidato5} com {percentual5:.2f}% dos votos.")
+    venceu = True
+    exit(0)
+
+if not venceu:
+    print("Não houve vencedor no 1º turno.")
+    print("Os dois candidatos que disputarão o 2º turno:")
+    
+
+maior1 = -1
+cod_maior1 = 0
+maior2 = -1
+cod_maior2 = 0
+
+# Verificando cada um
+if votostotais1 > maior1:
+ maior2 = maior1
+ cod_maior2 = cod_maior1
+ maior1 = votostotais1
+ cod_maior1 = candidato1
+elif votostotais1 > maior2:
+ maior2 = votostotais1
+ cod_maior2 = candidato1
+
+if votostotais2 > maior1:
+ maior2 = maior1
+ cod_maior2 = cod_maior1
+ maior1 = votostotais2
+ cod_maior1 = candidato2
+elif votostotais2 > maior2:
+ maior2 = votostotais2
+ cod_maior2 = candidato2
+
+if votostotais3 > maior1:
+ maior2 = maior1
+ cod_maior2 = cod_maior1
+ maior1 = votostotais3
+ cod_maior1 = candidato3
+elif votostotais3 > maior2:
+ maior2 = votostotais3
+ cod_maior2 = candidato3
+
+if votostotais4 > maior1:
+ maior2 = maior1
+ cod_maior2 = cod_maior1
+ maior1 = votostotais4
+ cod_maior1 = candidato4
+elif votostotais4 > maior2:
+ maior2 = votostotais4
+ cod_maior2 = candidato4
+
+if votostotais5 > maior1:
+ maior2 = maior1
+ cod_maior2 = cod_maior1
+ maior1 = votostotais5
+ cod_maior1 = candidato5
+elif votostotais5 > maior2:
+ maior2 = votostotais5
+ cod_maior2 = candidato5
+
+# Mostrando os dois mais votados
+print("Os dois candidatos que irão para o segundo turno são:")
+print(f"Candidato {cod_maior1} com {maior1} votos")
+print(f"Candidato {cod_maior2} com {maior2} votos")
+
+C00000650 - Faça um algoritmo que leia 3 notas de um aluno e escreva sua média harmônica (MH). Caso alguma das notas seja 0 (zero), MH deve receber 0 (zero). Se o aluno obteve uma MH abaixo de 6.0 e AINDA PUDER OBTER média igual ou superior a 6.0, o algoritmo deve ler uma quarta nota (da prova de recuperação) e substituir a menor das três notas pela nota da recuperação, recalculando MH. O algoritmo deve escrever a MH final e o conceito obtido (0, se MH < 6.0; 1 se 6.0 <= MH <7.0; 2 se 7.0 <= MH < 8.0; 3 se 8.0 <= MH < 9.0; 4 se MH>=9.0). Dica:No caso do aluno ter obtido média inferior a 6.0, uma forma de verificar se ele pode alcançar média 6.0 através da prova de recuperação é substituindo a menor nota por 10 e verificando se a MH resultante é igual ou superior a 6.0.
+
+nota1 = int(input("digite a primeira nota: "))
+nota2 = int(input("digite a segunda nota: "))
+nota3 = int(input("digite a terceira nota: "))
+
+if nota1 <= 0 or nota2 <= 0 or nota3 <= 0:
+    mediaharmonica = 0
+else:
+   mediaharmonica = 3 / (1 / nota1 + 1 / nota2 + 1 / nota3)
+
+if (mediaharmonica >= 6):
+   print("aprovado")
+   exit(0)
+else:
+   print("reprovado, digite a quarta nota:")
+   if (nota1 >= nota2 and nota1 >= nota3 and nota2 <= nota1
+       and nota2 <= nota3):
+      notamaior = nota1
+      notamenor = nota2
+      notameio = nota3
+   else:
+
+      if (nota2 >= nota1 and nota2 >= nota3 and nota1 <= nota2
+          and nota1 <= nota3):
+         notamaior = nota2
+         notamenor = nota1
+         notameio = nota3
+      else:
+
+         if (nota3 >= nota1 and nota3 >= nota2 and nota1 <= nota3
+             and nota2 <= nota3):
+            notamaior = nota3
+         notamenor = nota1
+         notameio = nota2
+
+nota4 = int(input("digite a quarta nota: "))
+#
+if nota1 <= nota2 and nota1 <= nota3:
+     nota1 = nota4
+else:
+     if nota2 <= nota1 and nota2 <= nota3:
+         nota2 = nota4
+     else:
+         nota3 = nota4
+
+mediaharmonica = 3 / (1/nota1 + 1/nota2 + 1/nota3)
+
+print(f"Média Harmônica após recuperação: {mediaharmonica:.2f}")
+
+if (mediaharmonica < 6):
+   print("Conceito 0")
+else:
+   if (mediaharmonica <= 6 and mediaharmonica < 7):
+      print("Conceito 1")
+   else:
+      if (mediaharmonica <= 7 and mediaharmonica < 8):
+         print("Conceito 2")
+      else:
+         if (mediaharmonica <= 8 and mediaharmonica < 9):
+            print("Conceito 3")
+         else:
+                print("Conceito 4")
+
+
+C00000660 - Faça um algoritmo que leia 4 valores, Hi, Mi, Hf, Mf, representando respectivamente a hora e minuto inicial e final de um evento, e calcule a duração do mesmo em horas e minutos. Considere que o evento pode iniciar em um dia e terminar no dia seguinte.
+
+horainicial = int(input("digite a hora de inicio de evento: "))
+minutoincial = int(input("digite o minuto de inicio de evento: "))
+horafinal = int(input("digite a hora de termino de evento: "))
+minutofinal = int(input("digite o minuto de termino de evento: "))
+
+horadeinicio = horainicial * 60 + minutoincial
+horadetermino = horafinal * 60 + minutofinal
+
+horatotal = horadetermino - horadeinicio
+
+horas = horatotal // 60
+minutos = horatotal % 60
+
+print(f"O EVENTO DUROU {horas} HORA(S) E {minutos} MINUTO(S)")
+
+
+C00000700 - As tarifas de um estacionamento são definidas assim: A primeira e a segunda hora custam 5 reais cada. A terceira e a quarta hora custam 2 reais cada. A partir da quinta hora, cada hora custa 1 real cada. Assim, se um carro ficar 5 horas no estacionamento, o motorista pagará 15 reais (5+5+2+2+1). Faça um algoritmo que leia dois valores He e Hs, respectivamente a hora de entrada e saída no estacionamento (horas inteiras, sem minutos), e escreva o valor a ser pago. Considere que o usuário deve retirar seu carro antes da meia-noite, ou seja, ele não pode entrar em um dia e sair no dia seguinte.
+
+horaentrada = int(input("digite a hora de entrada: "))
+horasaida = int(input("digite a hora de saida: "))
+horatotal = horasaida - horaentrada
+valorhora = 0
+
+if horatotal >= 1:
+  if horatotal >= 2:
+      valorhora += 2 * 5
+  else:
+      valorhora += 1 * 5
+
+if horatotal >= 3:
+  if horatotal >= 4:
+      valorhora += 2 * 2
+  else:
+      valorhora += (horatotal - 2) * 2
+    
+if horatotal >= 5:
+    valorhora += (horatotal - 4) * 1
+
+print("O valorhora a ser pago é de: R$", valorhora)
+
+C00000750 - Faça um algoritmo que leia, para duas barras de ouro, o seu peso e seu valor. O algoritmo deve ler também o limite de peso de uma mochila, e verificar e escrever que barra (s) devem ir na mochila de modo a maximizar o valor dentro dela, sem exceder seu limite de peso. O algoritmo deve escrever: 0 - Se nenhuma das barras puder ser colocada na mochila sem exceder o limite de peso 1 - Se apenas a barra 1 puder ir na mochila 2 - Se apenas a barra 2 puder ir na mochila 3 - Se ambas as barras puderem ir na mochila simultaneamente
+
+pesobarra1 = int(input("Digite o peso da barra 1: "))
+valorbarra1 = float(input("Digite o valor da barra 1: "))
+pesobarra2 = int(input("Digite o peso da barra 2: "))
+valorbarra2 = float(input("Digite o valor da barra 2: "))
+limitepesomochila = int(input("Digite o limite de peso da mochila: "))
+
+if pesobarra1 + pesobarra2 <= limitepesomochila:
+  print(" 3 - As barras cabem na mochila")
+
+if pesobarra1 <= limitepesomochila and pesobarra2 >= limitepesomochila:
+    print(" 1 - Apenas a barra 1 cabe na mochila")
+  
+if pesobarra2 <= limitepesomochila and pesobarra1 >= limitepesomochila :
+  print(" 2 - Apenas a barra 2 cabe na mochila")
+
+if pesobarra1 > limitepesomochila and pesobarra2 > limitepesomochila:
+  print(" 0 - As barras sao muito pesadas para caber na mochila")
+
+
+
+C00000800 - Faça um algoritmo que leia 4(quatro) valores e escreva os 3 (tres) maiores em ordem decrescente. Considere que podem ocorrer valores iguais.
+
+valor1 = int(input("Digite o valor 1: "))
+valor2 = int(input("Digite o valor 2: "))
+valor3 = int(input("Digite o valor 3: "))
+valor4 = int(input("Digite o valor 4: "))
+
+if valor1 == valor2 and valor1 == valor3 and valor1 == valor4:
+  print("Os valores são iguais")
+  exit()
+
+if valor1 > valor2 and valor1 > valor3 and valor1 > valor4:
+  maiorvalor = valor1
+
+if valor2 > valor1 and valor2 > valor3 and valor2 > valor4:
+  maiorvalor = valor2
+
+if valor3 > valor1 and valor3 > valor2 and valor3 > valor4:
+   maiorvalor = valor3
+
+if valor4 > valor1 and valor4 > valor2 and valor4 > valor3:
+  maiorvalor = valor4
+
+if valor1 < valor2 and valor1 < valor3 and valor1 < valor4:
+  menorvalor = valor1
+
+if valor2 < valor1 and valor2 < valor3 and valor2 < valor4:
+  menorvalor = valor2
+
+if valor3 < valor1 and valor3 < valor2 and valor3 < valor4:
+  menorvalor = valor3
+
+if valor4 < valor1 and valor4 < valor2 and valor4 < valor3:
+  menorvalor = valor4
+
+if valor1 < maiorvalor and valor1 > menorvalor:
+  valormeio = valor1
+
+if valor2 < maiorvalor and valor2 > menorvalor:
+  valormeio = valor2
+
+if valor3 < maiorvalor and valor3 > menorvalor:
+  valormeio = valor3
+
+if valor4 < maiorvalor and valor4 > menorvalor:
+  valormeio = valor4
+  
+print("Os três maiores valores em ordem decrescente são:")
+print(maiorvalor)
+print(valormeio)
+print(menorvalor)
+
+
+C00000810 - O número 3025 tem a seguinte característica: 30+25=55 e 55^2=3025. Faça um algoritmo que leia um número de quatro dígitos e verifique se tem essa característica, escrevendo: 0 - se não tem essa característica; 1 - se tem essa característica.
+
+numero = int(input("Digite um número de 4 dígitos: "))
+
+if numero >= 1000 and numero <= 9999:
+    parte1 = numero // 100       # os dois primeiros dígitos
+    parte2 = numero % 100        # os dois últimos dígitos
+
+    soma = parte1 + parte2
+    resultado = soma * soma
+
+    if resultado == numero:
+        print(1)
+    else:
+        print(0)
+else:
+    print("Número inválido. Digite um número de 4 dígitos.")
+
+	
+C00000850 - Faça um algoritmo que leia as três dimensões (largura, comprimento e altura) de duas caixas, e verifique se a primeira caixa pode ser colocada dentro da segunda, escrevendo 1 se é possível colocá-la, e 0 se não é possível. Considere que as caixas não podem ser rotacionadas em nenhuma direção.
+Dica: Para que uma caixa caiba na outra, cada dimensão dela deve ser menor (não pode ser igual ou maior) que a dimensão correspondente na segunda caixa
+
+largura1 = int(input("Digite a largura da primeira caixa: "))
+altura1 = int(input("Digite a altura da primeira caixa: "))
+comprimento1 = int(input("Digite o comprimento da primeira caixa:"))
+
+largura2 = int(input("\n Digite a largura da segunda caixa: "))
+altura2 = int(input("Digite a altura da segunda caixa: "))
+comprimento2 = int(input("Digite o comprimento da segunda caixa: "))
+
+caixa1 = largura1 * altura1 * comprimento1
+caixa2 = largura2 * altura2 * comprimento2
+
+if caixa1 == caixa2:
+    print("As caixas tem o mesmo tamanho.")
+else:
+    if caixa1 < caixa2:
+        print("A primeira caixa cabe dentro da segunda.")
+    else:
+        print("A primeira caixa nao cabe dentro da segunda.")
+
+
+C00000860 - Faça um algoritmo que leia as três dimensões (largura, comprimento e altura) de duas caixas, e verifique se a primeira caixa pode ser colocada dentro da segunda, escrevendo 1 se é possível colocá-la, e 0 se não é possível. Considere que as caixas podem ser rotacionadas em qualquer direção.
+
+largura1 = int(input("Digite a largura da primeira caixa: "))
+altura1 = int(input("Digite a altura da primeira caixa: "))
+comprimento1 = int(input("Digite o comprimento da primeira caixa:"))
+
+largura2 = int(input("\nDigite a largura da segunda caixa: "))
+altura2 = int(input("Digite a altura da segunda caixa: "))
+comprimento2 = int(input("Digite o comprimento da segunda caixa: "))
+
+caixa1 = largura1 * altura1 * comprimento1
+caixa2 = largura2 * altura2 * comprimento2
+
+if caixa1 == caixa2:
+    print("As caixas tem o mesmo tamanho.")
+else:
+        if (largura1 <= largura2 and altura1 <= altura2 and comprimento1 <= comprimento2) or \
+           (largura1 <= largura2 and comprimento1 <= altura2 and altura1 <= comprimento2) or \
+           (altura1 <= largura2 and largura1 <= altura2 and comprimento1 <= comprimento2) or \
+           (altura1 <= largura2 and comprimento1 <= altura2 and largura1 <= comprimento2) or \
+           (comprimento1 <= largura2 and largura1 <= altura2 and altura1 <= comprimento2) or \
+           (comprimento1 <= largura2 and altura1 <= altura2 and largura1 <= comprimento2):
+            print("A primeira caixa pode ser rotacionada para caber dentro da segunda.")
+        else:
+            print("A primeira caixa não cabe dentro da segunda, mesmo rotacionando.")
+ 
+
+  
+C00000866 - Faça um algoritmo que leia a data de nascimento de uma pessoa e a data atual (cada data com dia, mês e ano). O algoritmo deve escrever 1 se a pessoa é maior de idade, e 0 se ela é menor de idade (maioridade: 18 anos).
+
+anoatual = int(input("Digite o ano atual: "))
+mesatual = int(input("Digite o mês atual: "))
+if mesatual > 12 or mesatual < 1:
+    print("Mês inválido")
+    exit()
+diaatual = int(input("Digite o dia atual: "))
+if diaatual > 31 or diaatual < 1:
+    print("Dia inválido")
+    exit()
+
+anonascimento = int(input("\nDigite o ano de nascimento: "))
+mesnascimento = int(input("Digite o mês de nascimento: "))
+if mesnascimento > 12 or mesnascimento < 1:
+    print("Mês inválido")
+    exit()
+dianascimento = int(input("Digite o dia de nascimento: "))
+if dianascimento > 31 or dianascimento < 1:
+    print("Dia inválido")
+    exit()
+
+if anoatual < anonascimento:
+    print("Ano inválido, data de nascimento maior que a data atual")
+    exit()
+
+idade = anoatual - anonascimento
+
+if mesatual < mesnascimento:
+    idade = idade - 1
+else:
+    if mesatual == mesnascimento:
+        if diaatual < dianascimento:
+            idade = idade - 1
+
+if idade >= 18:
+    print("Voce é maior de idade")
+else:
+    print("Voce é menor de idade")
+
+C00000900 - Faça um algoritmo que leia para um trabalhador o valor que ganha por hora, a hora de entrada e a hora de saída (valores inteiros, sem minutos) e calcule quanto ele ganhou pelo turno. Considere que ele entra e sai no mesmo dia.
+  
+valorhora = int(input("Digite o valor da hora de trabalho: "))
+horaentrada = int(input("Digite a hora de entrada: "))
+horasaida = int(input("Digite a hora de saida: "))
+
+if horasaida < horaentrada:
+  horasaida += 24
+
+horastotal = horasaida - horaentrada
+valordia = horastotal * valorhora
+  
+print("O valor do dia de trabalho é: ", valordia)
+
+
+C00001000 - Faça um algoritmo que leia para um trabalhador o valor que ganha por hora, a hora de entrada e a hora de saída (valores inteiros, sem minutos) e calcule quanto ele ganhou pelo turno. Considere que ele entra e sai no mesmo dia, e que as horas a partir das 20:00 valem 20% a mais (adicional noturno).
+
+valorhora = int(input("Digite o valor da hora de trabalho: "))
+horaentrada = int(input("Digite a hora de entrada: "))
+horasaida = int(input("Digite a hora de saida: "))
+
+if horasaida < horaentrada:
+  horasaida += 24
+
+horanormal = 0
+horanoturna = 0
+
+horastotal = horasaida - horaentrada
+
+if horaentrada >= 20:
+  horanoturna = horastotal
+else:
+ if horasaida <= 20:
+  horanormal = horastotal
+ else:
+   horanormal = 20 - horaentrada
+   horanoturna = horasaida - 20
+
+   valorhoranoturna = valorhora * 1.2
+
+valorhora = (horanormal * valorhora) + (horanoturna * valorhoranoturna)
+
+  
+print("O valor do dia de trabalho é: ", valorhora)
+  
