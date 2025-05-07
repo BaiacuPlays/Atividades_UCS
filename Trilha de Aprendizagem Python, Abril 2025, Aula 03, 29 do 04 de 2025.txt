@@ -1,0 +1,321 @@
+I00000900 - Faça um algoritmo que leia um valor N, e escreva todos os seus divisores.
+
+n = int(input("Digite um valor: "))
+
+for i in range(1, n + 1):
+    if n % i == 0:
+        print(i)
+
+I00001000 - Faça um algoritmo que leia um valor N, e conte quantos divisores possui, escrevendo ao final essa informação.
+
+n = int(input("Digite um valor: "))
+contador = 0
+
+for i in range(1, n + 1):
+    if n % i == 0:
+        contador = contador + 1
+        
+print(f"O número {n} tem {contador} divisores.")
+
+
+I00001100 - Faça um algoritmo que leia um valor N, e calcule e escreva a soma dos seus divisores.
+
+n = int(input("Digite um valor: "))
+contador = 0
+
+for i in range(1, n + 1):
+    if n % i == 0:
+        contador = contador + i
+        
+print(f"A soma dos divisores de {n} é {contador}.")
+
+
+I00001150 - Faça um algoritmo que leia um valor N inteiro e maior do que 1, e calcule e escreva o seu
+maior divisor (excetuando N).
+
+n = int(input("Digite um valor: "))
+if n < 0:
+    print("Numero invalido")
+    exit()
+    
+contador = 0
+
+for i in range(1, n ):
+    if n % i == 0:
+        if i > contador:
+            contador = i
+        
+print(f"O maior divisor de {n} é {contador}.")
+
+I00001155 - Faça um algoritmo que leia um valor N inteiro e maior do que 1, e calcule e escreva o seu menor divisor maior do que 1.
+
+n = int(input("Digite um valor: "))
+
+if n < 0:
+    print("Numero invalido")
+    exit()
+
+for i in range(2, n + 1):
+    if n % i == 0:
+        print(f"O menor divisor de {n} é {i}.")
+        break
+
+
+I00001200 - Um número inteiro maior do que 1 é primo se ele possui como divisores somente o 1 e ele
+mesmo. Faça um algoritmo que leia um número e verifique se é primo escrevendo: 1 - se o número é primo; 0 - se o número não é primo. Dica:Pode-se também verificar se um número é primo encontrando seu primeiro
+divisor maior que 1. Se o primeiro divisor for o próprio número, ele é primo.
+
+n = int(input("Digite um valor: "))
+
+if n <= 1:
+    print("0")
+else:
+    for i in range(2, n):
+        if n % i == 0:
+            print("0")
+            break
+    else:
+        print(1)
+
+
+I00001300 - Dois números n1 e n2 são ditos amigos entre si se a soma dos divisores de n1 (excluindo o próprio n1) é igual a n2, e a soma dos divisores de n2 (excluindo o próprio n2) é igual a n1. Ex: 220 e 284. Faça um algoritmo que leia 2 valores e verifique se são amigos entre si escrevendo: 1 - se são amigos; 0 - se não são amigos.
+
+n1 = int(input("Digite o primeiro valor: "))
+n2 = int(input("Digite o segundo valor: "))
+soma1 = 0
+soma2 = 0
+
+for i in range(1, n1):
+        if n1 % i == 0:
+           soma1 = soma1 + i
+           
+for i in range(1, n2):
+        if n2 % i == 0:
+            soma2 = soma2 + i
+            
+if soma1 == n2 and soma2 == n1:
+    print("Sao amigos")
+else:
+        print("Nao sao amigos")
+
+I00001400 - Faça um algoritmo que leia 10 números positivos e escreva ao final o maior deles.
+
+maior = 0
+
+for i in range(10):
+    numero = int(input(f"Digite o {i+1}º número positivo: "))
+    if numero > maior:
+        maior = numero  # Atualiza o maior valor
+print(f"O maior número é: {maior}")
+
+I00001500 - Faça um algoritmo que leia 10 números, positivos ou negativos, e escreva ao final o maior
+deles.
+
+maior = int(input("Digite o 1º número: "))
+
+for i in range(2,10):
+    numero = int(input(f"Digite o {i}º número: "))
+    if numero > maior:
+        maior = numero  # Atualiza o maior valor
+print(f"O maior número é: {maior}")
+
+I00001600 - Faça um algoritmo que leia 10 números e escreva ao final o maior e o menor deles.
+
+maior = int(input("Digite o 1º número: "))
+menor = maior
+
+for i in range(2,11):
+    numero = int(input(f"Digite o {i}º número: "))
+    if numero > maior:
+        maior = numero
+        
+    if numero < menor:
+       menor = numero
+print(f"O maior número é: {maior} e o menor é {menor}")
+
+I00001610 - Faça um algoritmo que leia um valor n (n>=1) correspondente ao número de alunos de uma
+turma. Após, o algoritmo lê as notas das provas dos n alunos dessa turma. As notas deverão ser lidas até que sejam informadas n notas válidas, ou seja, no intervalo [0, 10], descartando as notas fora desse intervalo. As notas somente poderão ser lidas uma única vez. O algoritmo deve informar qual foi a menor nota e o percentual dos alunos que tiraram a menor nota (que não é, necessariamente, 0). Por exemplo, se o valor lido para n foi 20 e as notas foram 6.0 6.5 8.0 9.0 4.5 3.0 9.0 8.5 4.5 3.0 6.0 3.0 8.0 9.0 4.5 10 9.0 8.5 4.5 3.0 o algoritmo escreve 3.0 e 20, já que quatro (20% de 20) alunos tiraram essa nota.
+
+n = int(input("Digite a quantidade de alunos na turma: "))
+menor = float('inf')
+burros = 0
+
+for i in range(n):
+    while True:
+        nota = float(input(f"Digite a nota do aluno {i+1} (0 a 10): "))
+        if 0 <= nota <= 10:
+            if nota < menor:
+                 menor = nota
+                 burros = 1
+            elif nota == menor:
+                burros += 1
+            break
+        else:
+            print("Nota invalida, insira novamente")
+print(f"A menor nota da turma é: {menor}")
+
+percentual = (burros / n) * 100
+
+print(f"O percentual de alunos que tiraram a menor nota é: {percentual:.2f}%")
+   
+
+I00001700 - Faça um algoritmo que leia, para 10 pessoas, seu peso e altura e escreva o peso e a altura da pessoa mais alta.
+
+maior = 0
+maior2 = 0
+
+for i in range(3):
+    peso = float(input(f"Digite o peso da pessoa {i + 1}: \n"))
+    altura = float(input(f"Digite a altura da pessoa {i + 1}: \n"))
+    
+    if peso > maior:
+       maior = peso
+       pessoa_mais_pesada = i + 1
+    
+    if altura > maior2:
+        maior2 = altura
+        pessoa_mais_alta = i + 1
+        
+print(f"O maior peso encontrado foi {maior}kg, na pessoa {pessoa_mais_pesada}.")
+print(f"A maior altura encontrada foi {maior2} metros, na pessoa { pessoa_mais_alta}.")
+
+
+I00001750 - O índice de massa corporal (IMC) de uma pessoa é dada pela relação peso/(altura^2). Faça um
+algoritmo que leia, para 10 pessoas, seu peso e altura e escreva o IMC, peso e altura da pessoa de maior IMC.
+
+maior = 0
+maior2 = 0
+maiorimc = 0
+
+for i in range(3):
+    peso = float(input(f"Digite o peso da pessoa {i + 1}: \n"))
+    altura = float(input(f"Digite a altura da pessoa {i + 1}: \n"))
+    imc = peso/(altura ** 2)
+    
+    if peso > maior:
+       maior = peso
+       pessoa_mais_pesada = i + 1
+    
+    if altura > maior2:
+        maior2 = altura
+        pessoa_mais_alta = i + 1
+        
+    if imc > maiorimc:
+        maiorimc = imc
+        peso_maior_imc = peso
+        altura_maior_imc = altura
+
+        
+print(f"O maior peso encontrado foi {maior}kg, na pessoa {pessoa_mais_pesada}.")
+print(f"A maior altura encontrada foi {maior2} metros, na pessoa { pessoa_mais_alta}.")
+
+print(f"O maior IMC foi {maiorimc:.2f}, da pessoa com {peso_maior_imc}kg e {altura_maior_imc}m de altura.")
+
+I00001800 - Faça um algoritmo que leia o código e a votação de cada um dos candidatos a uma vaga no
+senado, até que o código digitado seja 0 (não deverá ser lida a votação neste caso). O algoritmo deve
+escrever os códigos e as votações dos dois senadores eleitos (assuma que não haverão três candidatos com
+igual votação e que seja a maior votação).
+
+
+contador = 1
+codigo = int(input(f"Digite o codigo do {contador}º candidato: "))
+votação = int(input(f"Digite a votação do {contador}º candidato: "))
+
+maior1 = 0
+cod1 = 0
+maior2 = 0
+cod2 = 0
+
+while codigo != 0:
+    if votação > maior1:
+        maior2 = maior1
+        cod2 = cod1
+
+        maior1 = votação
+        cod1 = codigo
+    elif votação > maior2:
+        maior2 = votação
+        cod2 = codigo
+
+    contador += 1
+    codigo = int(input(f"Digite o codigo do {contador}º candidato: "))
+    if codigo != 0:
+        votação = int(input(f"Digite a votação do {contador}º candidato: "))
+
+print(f"Candidato {cod1}")
+print(f"{maior1} Votos")
+print(f"Candidato {cod2}")
+print(f"{maior2} Votos")
+
+
+I00001900 - Faça um algoritmo que leia 10 números e escreva os que forem primos.
+
+for _ in range(10):
+    n = int(input("Digite um valor: "))
+    
+    if n < 2:
+        print(f"{n} Não é primo")
+    else:
+        for i in range(2, n):
+            if n % i == 0:
+                print(f"{n} Não é primo")
+                break
+        else:
+            print(f"{n} É primo")
+
+I00001950 - Faça um algoritmo que escreva os 50 primeiros números primos.
+
+contador = 0
+numero = 2
+
+while contador < 50:
+    primo = True
+    i = 2
+    while i * i <= numero:
+        if numero % i == 0:
+            primo = False
+            break
+        i += 1
+
+    if primo:
+        print(numero)
+        contador += 1
+
+    numero += 1
+
+
+I00002000 - Faça um algoritmo que leia 2 números N1 e N2 e escreva a soma dos números primos entre N1 e N2 (incluindo N1 e N2 se algum deles for primo)
+
+n1 = int(input("Digite o primeiro numero: "))
+n2 = int(input("Digite o segundo numero: "))
+
+primo1 = True
+primo2 = True
+
+for i in range(2, n1): 
+    if n1 % i == 0:
+        primo1 = False 
+        break
+    
+for i in range(2, n2): 
+    if n2 % i == 0:
+        primo2 = False 
+        break
+
+if primo1 and n1 > 1:
+    print(f"{n1} é primo!")
+else:
+    print(f"{n1} não é primo!")
+    
+if primo2 and n2 > 1:
+    print(f"{n2} é primo!")
+else:
+    print(f"{n2} não é primo!")
+    
+soma = 0
+if primo1 and n1 > 1:
+    soma += n1
+if primo2 and n2 > 1:
+    soma += n2
+    
+print(soma)
